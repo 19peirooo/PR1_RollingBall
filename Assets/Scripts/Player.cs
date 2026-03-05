@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float jumpForce = 15;
     [SerializeField] private float moveForce = 40;
     
+    
     private Rigidbody rb;
     
     private float hInput;

@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    
+
+    [SerializeField] private float lives = 5;
     [SerializeField] private float jumpForce = 15;
     [SerializeField] private float baseMoveForce = 40;
     [SerializeField] private float sprintMultiplier = 2;
@@ -13,9 +15,11 @@ public class Player : MonoBehaviour
     private float hInput;
     private float vInput;
     private float moveForce;
+    private Vector3 baseSize;
     
     //Variables de Estados Internos del Jugador
     private bool isSprinting = false;
+    private bool isMini = false;
     private bool isWallRunning = false;
     private bool isOnValidWall = false;
     
@@ -24,6 +28,7 @@ public class Player : MonoBehaviour
     private RaycastHit wallHit;
     private Vector3 wallNormal;
     private float wallStickForce = 10f;
+    
 
     private bool isGrounded()
     {
@@ -33,6 +38,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        baseSize = transform.localScale;
     }
 
     
@@ -41,9 +47,10 @@ public class Player : MonoBehaviour
         hInput = Input.GetAxisRaw("Horizontal");
         vInput = Input.GetAxisRaw("Vertical");
         isSprinting = Input.GetKey(KeyCode.LeftShift);
+        isMini =  Input.GetKey(KeyCode.LeftControl);
         moveForce = isSprinting ? baseMoveForce * sprintMultiplier : baseMoveForce;
         if (isGrounded()) lastWall = null;
-        
+        transform.localScale = isMini ? baseSize/2 : baseSize;
         
         DetectWall();
         HandleWallRun();
@@ -149,5 +156,17 @@ public class Player : MonoBehaviour
         
         StopWallRun();
     }
-    
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.TryGetComponent(out Damage damage))
+        {
+            lives -= damage.ObtenerDamageAmount();
+            transform.position = GameManager.Instance.SpawnPoint;
+        }
+        else if (other.gameObject.TryGetComponent(out Portal portal))
+        {
+            portal.Enter();
+        }
+    }
 }

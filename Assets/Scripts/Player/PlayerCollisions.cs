@@ -24,4 +24,13 @@ public class PlayerCollisions : MonoBehaviour
             portal.Enter(lives);
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.TryGetComponent(out Life life))
+        {
+            lives += life.getLives();
+            UIManager.Instance.LivesText.SetText(lives.ToString());
+        }
+    }
 }

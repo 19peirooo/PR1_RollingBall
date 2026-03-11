@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float lives = 5;
     [SerializeField] private float jumpForce = 15;
     [SerializeField] private float baseMoveForce = 40;
+    [SerializeField] private float baseWallMoveForce = 80;
     [SerializeField] private float sprintMultiplier = 2;
     [SerializeField] private float wallCheckDistance = 0.3f;
     [SerializeField] private LayerMask wallLayer;
@@ -15,6 +16,7 @@ public class Player : MonoBehaviour
     private float hInput;
     private float vInput;
     private float moveForce;
+    private float wallMoveForce;
     private Vector3 baseSize;
     
     //Variables de Estados Internos del Jugador
@@ -27,7 +29,7 @@ public class Player : MonoBehaviour
     private Collider lastWall;
     private RaycastHit wallHit;
     private Vector3 wallNormal;
-    private float wallStickForce = 10f;
+    private float wallStickForce = 2f;
     
 
     private bool isGrounded()
@@ -49,6 +51,7 @@ public class Player : MonoBehaviour
         isSprinting = Input.GetKey(KeyCode.LeftShift);
         isMini =  Input.GetKey(KeyCode.LeftControl);
         moveForce = isSprinting ? baseMoveForce * sprintMultiplier : baseMoveForce;
+        wallMoveForce = isSprinting ? baseWallMoveForce * sprintMultiplier : baseWallMoveForce;
         if (isGrounded()) lastWall = null;
         transform.localScale = isMini ? baseSize/2 : baseSize;
         
@@ -68,14 +71,10 @@ public class Player : MonoBehaviour
         }
         else
         {
-
-            Vector3 wallForward = Vector3.Cross(wallNormal, Vector3.up);
-
-            // Orientar según hacia donde mira el jugador
-            if (Vector3.Dot(wallForward, transform.forward) < 0)
-                wallForward = -wallForward;
-
-            rb.AddForce(wallForward * moveForce * vInput, ForceMode.Force); //Fuerza de Movimiento en el wallrun 
+            
+            Vector3 movement = new Vector3(hInput, 0, 0).normalized;
+            rb.AddForce(movement * wallMoveForce, ForceMode.Force);
+            
             rb.AddForce(-wallNormal * wallStickForce, ForceMode.Force); //Hace que te "pegues" a la pared
         }
         
@@ -97,7 +96,7 @@ public class Player : MonoBehaviour
         
         if (!wallRight && wallLeft) wallHit = leftHit;
         
-        bool validTag = (wallRight || wallLeft) && wallHit.collider.CompareTag("WallRunnable");
+        bool validTag = (wallRight || wallLeft);
         
         isOnValidWall = validTag && wallHit.collider != lastWall;
         
@@ -169,4 +168,5 @@ public class Player : MonoBehaviour
             portal.Enter();
         }
     }
+
 }

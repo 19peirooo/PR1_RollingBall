@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8335032450596237391}
   - component: {fileID: 8851714591001138413}
   - component: {fileID: 4586546414198244778}
+  - component: {fileID: 9057172270598550624}
   - component: {fileID: 403810097853506000}
   - component: {fileID: 4110526479842429310}
   - component: {fileID: 6911499574602135218}
@@ -107,6 +108,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCollisions
   lives: 5
+--- !u!114 &9057172270598550624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6800986001463517376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75e5661e52096ad4e8badc491c49cefb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerWallrun
+  wallRunForce: 40
+  wallCheckDistance: 0.7
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  jumpForce: 15
+  gravityCounterForce: 8
+  orientation: {fileID: 0}
 --- !u!114 &403810097853506000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,12 +142,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player
   jumpForce: 15
   baseMoveForce: 40
-  baseWallMoveForce: 80
   sprintMultiplier: 2
-  wallCheckDistance: 0.6
-  wallLayer:
-    serializedVersion: 2
-    m_Bits: 0
+  orientation: {fileID: 0}
 --- !u!135 &4110526479842429310
 SphereCollider:
   m_ObjectHideFlags: 0

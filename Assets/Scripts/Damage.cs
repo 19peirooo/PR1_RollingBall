@@ -3,9 +3,9 @@ using UnityEngine;
 public class Damage : MonoBehaviour
 {
 
-    [SerializeField] private float damageAmount;
+    [SerializeField] private int damageAmount;
     
-    public float ObtenerDamageAmount()
+    public int ObtenerDamageAmount()
     {
         return damageAmount;
     }

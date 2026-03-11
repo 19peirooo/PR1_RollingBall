@@ -4,7 +4,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
-    [SerializeField] private float lives = 5;
+    
     [SerializeField] private float jumpForce = 15;
     [SerializeField] private float baseMoveForce = 40;
     [SerializeField] private float baseWallMoveForce = 80;
@@ -36,11 +36,16 @@ public class Player : MonoBehaviour
     {
         return Physics.Raycast(transform.position, Vector3.down, transform.localScale.y);
     }
-    
-    void Start()
+
+    private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         baseSize = transform.localScale;
+    }
+
+    void Start()
+    {
+        
     }
 
     
@@ -72,10 +77,10 @@ public class Player : MonoBehaviour
         else
         {
             
-            Vector3 movement = new Vector3(hInput, 0, 0).normalized;
+            Vector3 alongWall = Vector3.Cross(wallNormal, Vector3.up).normalized;
+            Vector3 movement = alongWall * vInput + transform.right * hInput;
             rb.AddForce(movement * wallMoveForce, ForceMode.Force);
-            
-            rb.AddForce(-wallNormal * wallStickForce, ForceMode.Force); //Hace que te "pegues" a la pared
+            rb.AddForce(-wallNormal * wallStickForce, ForceMode.Force);
         }
         
     }
@@ -155,18 +160,5 @@ public class Player : MonoBehaviour
         
         StopWallRun();
     }
-
-    private void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.TryGetComponent(out Damage damage))
-        {
-            lives -= damage.ObtenerDamageAmount();
-            transform.position = GameManager.Instance.SpawnPoint;
-        }
-        else if (other.gameObject.TryGetComponent(out Portal portal))
-        {
-            portal.Enter();
-        }
-    }
-
+    
 }

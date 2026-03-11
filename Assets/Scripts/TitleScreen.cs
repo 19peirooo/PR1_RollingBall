@@ -14,7 +14,7 @@ public class TitleScreen : MonoBehaviour
     
     void StartGame()
     {
-        GameManager.Instance.LoadNewScene(1);
+        GameManager.Instance.LoadNewScene(1,5);
     }
 
 }

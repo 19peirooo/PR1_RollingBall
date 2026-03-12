@@ -15,9 +15,8 @@ GameObject:
   - component: {fileID: 6932783851031302298}
   - component: {fileID: 6382174897697409086}
   - component: {fileID: 494735872315472422}
-  - component: {fileID: 6848121829248087010}
   m_Layer: 0
-  m_Name: Cuerda (1)
+  m_Name: CuerdaDetras
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -131,7 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Pendulo
   angleComeAndBack: 30
-  velocity: 100
+  velocity: 50
 --- !u!54 &6382174897697409086
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -169,7 +168,7 @@ HingeJoint:
   serializedVersion: 3
   m_ConnectedBody: {fileID: 8750494959253336723}
   m_ConnectedArticulationBody: {fileID: 0}
-  m_Anchor: {x: 0, y: 1, z: 0}
+  m_Anchor: {x: 0, y: 1.25, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: 0, y: 0, z: 0}
@@ -198,20 +197,6 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &6848121829248087010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 809526292974448122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5349c5d59b0ee7140a1630e3305be28c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Pendulo
-  angleComeAndBack: 30
-  velocity: 5
 --- !u!1001 &7165907210102923910
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -262,7 +247,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: dcccae8e4d8234e82bebbb88f979ca13, type: 3}
       propertyPath: m_Name
-      value: spin blade (1)
+      value: Sierra Detras
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -440,6 +425,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1480127149285172150, guid: 1138b7c11696e794ebe63814bf15f8b2, type: 3}
+      propertyPath: m_Anchor.y
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2752514859568801111, guid: 1138b7c11696e794ebe63814bf15f8b2, type: 3}
+      propertyPath: m_Name
+      value: Sierra Delante
+      objectReference: {fileID: 0}
     - target: {fileID: 3276708490640719853, guid: 1138b7c11696e794ebe63814bf15f8b2, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.5500002
@@ -448,11 +441,20 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.55
       objectReference: {fileID: 0}
+    - target: {fileID: 6403328696338752307, guid: 1138b7c11696e794ebe63814bf15f8b2, type: 3}
+      propertyPath: m_Name
+      value: CuerdaDelante
+      objectReference: {fileID: 0}
+    - target: {fileID: 7131646158958093861, guid: 1138b7c11696e794ebe63814bf15f8b2, type: 3}
+      propertyPath: velocity
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 7782845497551751724, guid: 1138b7c11696e794ebe63814bf15f8b2, type: 3}
       propertyPath: m_Name
-      value: PenduloSierraDoble Variant
+      value: PenduloSierraDoble
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8582126654734357720, guid: 1138b7c11696e794ebe63814bf15f8b2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 989821480664031189, guid: 1138b7c11696e794ebe63814bf15f8b2, type: 3}

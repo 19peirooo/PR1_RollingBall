@@ -6,14 +6,16 @@ public class PlayerWallrun : MonoBehaviour
     
     [SerializeField] private float wallCheckDistance = 0.7f;
     [SerializeField] private LayerMask wallLayer;
-    [SerializeField] private float jumpForce = 15f;
+    [SerializeField] private float jumpForce = 25f;
     [SerializeField] private Transform orientation;
     
     private RaycastHit leftHit, rightHit;
     private bool wallLeft, wallRight;
     private bool isWallRunning;
+    private float wallJumpForce = 25f;
     
     private Rigidbody rb;
+    
     
     
     void Start()
@@ -53,6 +55,8 @@ public class PlayerWallrun : MonoBehaviour
         if (canWallRun)
         {
             if (!isWallRunning) StartWallrun();
+            
+            if (Input.GetKeyDown(KeyCode.Space)) WallJump();
         }
         else
         {
@@ -65,7 +69,6 @@ public class PlayerWallrun : MonoBehaviour
         isWallRunning = true;
         rb.useGravity = false;
         
-        rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
     }
 
     private void StopWallRun()
@@ -77,12 +80,12 @@ public class PlayerWallrun : MonoBehaviour
     private void WallJump()
     {
         Vector3 wallNormal = wallRight ? rightHit.normal : leftHit.normal;
-        Vector3 force = transform.up * jumpForce + wallNormal * jumpForce;
-
-        rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+        Vector3 force = orientation.up * jumpForce + wallNormal * wallJumpForce;
+        
         rb.AddForce(force, ForceMode.Impulse);
 
         StopWallRun();
+        
     }
     
     private void Wallrun()

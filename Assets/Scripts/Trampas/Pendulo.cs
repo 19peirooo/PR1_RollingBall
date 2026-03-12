@@ -15,7 +15,7 @@ public class Pendulo : MonoBehaviour
         hj = GetComponent<HingeJoint>();
         motor = hj.motor;
         motor.targetVelocity = velocity;
-        motor.force = 50f;
+        //motor.force = 50f;
         hj.motor = motor;
     }
 

@@ -19,19 +19,16 @@ public class Player : MonoBehaviour
     private bool isSprinting = false;
     private bool isMini = false;
     
-    
+    private void Awake()
+        {
+            rb = GetComponent<Rigidbody>();
+            baseSize = transform.localScale;
+        }
 
     private bool isGrounded()
     {
         return Physics.Raycast(transform.position, Vector3.down, transform.localScale.y);
     }
-
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody>();
-        baseSize = transform.localScale;
-    }
-
     
     void Update()
     {

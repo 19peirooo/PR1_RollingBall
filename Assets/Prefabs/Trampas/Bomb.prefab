@@ -14,11 +14,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3c47550989e8e47859e785a4893523e6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3c47550989e8e47859e785a4893523e6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 83
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3c47550989e8e47859e785a4893523e6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 175cf1580009c5c45bae3c5749722c40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Damage
-  damageAmount: 0
+  damageAmount: 1
 --- !u!135 &7605943009090876642
 SphereCollider:
   m_ObjectHideFlags: 0

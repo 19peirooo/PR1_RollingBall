@@ -10,9 +10,6 @@ public class Cañon : MonoBehaviour
     [Header("Objeto Spawneado")] 
     [SerializeField] private GameObject spawnObject;
     [SerializeField] private float timeToDestroy = 4f;
-    [SerializeField] private float moveForce = 0.1f;
-    [SerializeField] private Vector3 moveDirection = new Vector3(0f, 0f, -1f);
-
     private void Start()
     {
         StartCoroutine(spawn());

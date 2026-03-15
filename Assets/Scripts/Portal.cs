@@ -6,9 +6,9 @@ public class Portal : MonoBehaviour
     [SerializeField] private int sceneToLoad;
     [SerializeField] private AudioClip portalSfx;
 
-    public void Enter(int lives)
+    public void Enter()
     {
-        GameManager.Instance.LoadNewScene(sceneToLoad, lives);
+        GameManager.Instance.LoadNewScene(sceneToLoad);
         AudioManager.Instance.PlaySfx(portalSfx);
     }
 

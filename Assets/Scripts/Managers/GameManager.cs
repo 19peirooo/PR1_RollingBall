@@ -5,17 +5,13 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     public Vector3 SpawnPoint { get; private set; } =  Vector3.zero;
-    public int Lives { get; private set; } = 5;
+    public int Lives { get; private set; } = 7;
     
     [SerializeField] private AudioClip menuMusic;
     [SerializeField] private AudioClip levelMusic;
     [SerializeField] private AudioClip bossMusic;
     [SerializeField] private AudioClip VictoryMusic;
     [SerializeField] private AudioClip DefeatSfx;
-    
-    
-    
-
     private void Awake()
     {
         if (Instance == null)
@@ -29,11 +25,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void LoadNewScene(int sceneIndex, int lives)
+    public void LoadNewScene(int sceneIndex)
     {
         SceneManager.LoadScene(sceneIndex);
         LoadSceneMusic(sceneIndex);
-        Lives = lives;
     }
 
     public void LoadSceneMusic(int sceneIndex)
@@ -42,7 +37,7 @@ public class GameManager : MonoBehaviour
         {
             case 0:
                 AudioManager.Instance.PlayMusic(menuMusic);
-                Lives = 5;
+                Lives = 7;
                 break;
 
             case 1:
@@ -69,12 +64,22 @@ public class GameManager : MonoBehaviour
 
     public void Defeat()
     {
-        LoadNewScene(5, Lives);
+        LoadNewScene(5);
     }
     
     public void Victory()
     {
-        LoadNewScene(4, Lives);
+        LoadNewScene(4);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        Lives -= damage;
+    }
+    
+    public void Heal(int amount)
+    {
+        Lives += amount;
     }
     
 }

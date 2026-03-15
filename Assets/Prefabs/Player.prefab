@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 034f0b7aa3fdfbc4ebf110f52fed4d8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  lives: 5
+  lives: 10
   freeCam: {fileID: 0}
   jumpForce: 15
   baseMoveForce: 25

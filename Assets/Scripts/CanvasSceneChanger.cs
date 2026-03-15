@@ -15,7 +15,7 @@ public class CanvasSceneChanger : MonoBehaviour
     
     void ChangeScene()
     {
-        GameManager.Instance.LoadNewScene(sceneToLoad,GameManager.Instance.Lives);
+        GameManager.Instance.LoadNewScene(sceneToLoad);
     }
 
 }

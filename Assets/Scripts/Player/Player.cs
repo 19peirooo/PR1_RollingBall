@@ -5,7 +5,6 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     
-    [SerializeField] private int lives = 5;
     [SerializeField] private Camera freeCam;
     
     [Header("Movement")]
@@ -120,18 +119,22 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.TryGetComponent(out Damage damage))
         {
-            lives -= damage.ObtenerDamageAmount();
+            int damageAmount = damage.ObtenerDamageAmount();
             AudioManager.Instance.PlaySfx(dmgSfx);
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
             transform.position = GameManager.Instance.SpawnPoint;
-            UIManager.Instance.LivesText.SetText(lives.ToString());
-            if (lives <= 0)
+            GameManager.Instance.TakeDamage(damageAmount);
+            int newLives = GameManager.Instance.Lives;
+            UIManager.Instance.LivesText.SetText(newLives.ToString());
+            if (newLives <= 0)
             {
                 GameManager.Instance.Defeat();
             }
         }
         else if (other.gameObject.TryGetComponent(out Portal portal))
         {
-            portal.Enter(lives);
+            portal.Enter();
         }
     }
     
@@ -139,8 +142,8 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.TryGetComponent(out Life life))
         {
-            lives += life.getLives();
-            UIManager.Instance.LivesText.SetText(lives.ToString());
+            GameManager.Instance.Heal(life.getLives());
+            UIManager.Instance.LivesText.SetText(GameManager.Instance.Lives.ToString());
         }
         else if (other.gameObject.TryGetComponent(out LowGravZone lgz))
         {

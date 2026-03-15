@@ -37,4 +37,9 @@ public class GameManager : MonoBehaviour
         LoadNewScene(5, Lives);
     }
     
+    public void Victory()
+    {
+        LoadNewScene(4, Lives);
+    }
+    
 }

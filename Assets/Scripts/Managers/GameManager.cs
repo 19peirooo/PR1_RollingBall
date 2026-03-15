@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public Vector3 SpawnPoint { get; private set; } =  Vector3.zero;
     public int Lives { get; private set; } = 5;
     
+    
 
     private void Awake()
     {

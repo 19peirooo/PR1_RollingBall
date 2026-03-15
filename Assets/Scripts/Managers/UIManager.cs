@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -21,6 +22,11 @@ public class UIManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    private void Start()
+    {
+        LivesText.SetText(GameManager.Instance.Lives.ToString());
     }
 }
     

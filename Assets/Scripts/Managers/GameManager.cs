@@ -31,5 +31,10 @@ public class GameManager : MonoBehaviour
     {
         SpawnPoint = point;
     }
+
+    public void Defeat()
+    {
+        LoadNewScene(5, Lives);
+    }
     
 }

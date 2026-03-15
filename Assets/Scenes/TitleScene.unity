@@ -517,7 +517,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ada98c2765e440644a5e4e4f18ca7746, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TitleScreen
-  playButton: {fileID: 709048103}
+  button: {fileID: 709048103}
+  sceneToLoad: 1
 --- !u!1 &709048101
 GameObject:
   m_ObjectHideFlags: 0

@@ -47,14 +47,20 @@ public class Player : MonoBehaviour
         transform.localScale = isMini ? baseSize/2 : baseSize;
         orientation.position = transform.position;
         Jump();
+        ChangeCameraOrientation();
         
     }
 
     void FixedUpdate()
     {
 
-        Vector3 movement = new Vector3(hInput, 0, vInput).normalized;
-        rb.AddForce(movement * moveForce, ForceMode.Force);
+        Vector3 right = orientation.right;
+        right.y = 0f;
+        right.Normalize();
+
+        Vector3 movement = right * hInput + Vector3.forward * vInput;
+
+        rb.AddForce(movement.normalized * moveForce, ForceMode.Force);
         
     }
     
@@ -67,6 +73,18 @@ public class Player : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce * gravMultiplier, ForceMode.Impulse);
         }
     }
+
+    private void ChangeCameraOrientation()
+    {
+        if (vInput >= 0)
+        {
+            orientation.rotation = Quaternion.Euler(0, 0, 0);    
+        } 
+        else if (vInput == -1)
+        {
+            orientation.rotation = Quaternion.Euler(0, 180, 0);
+        }
+    }
     
     private void OnCollisionEnter(Collision other)
     {
@@ -75,6 +93,10 @@ public class Player : MonoBehaviour
             lives -= damage.ObtenerDamageAmount();
             transform.position = GameManager.Instance.SpawnPoint;
             UIManager.Instance.LivesText.SetText(lives.ToString());
+            if (lives <= 0)
+            {
+                GameManager.Instance.Defeat();
+            }
         }
         else if (other.gameObject.TryGetComponent(out Portal portal))
         {

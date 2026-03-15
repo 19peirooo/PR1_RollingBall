@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 3c47550989e8e47859e785a4893523e6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.76
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3c47550989e8e47859e785a4893523e6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 4.61
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3c47550989e8e47859e785a4893523e6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -4.949997
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3c47550989e8e47859e785a4893523e6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91386f9b4760aad4d8950a390ab57b86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bomba
+  bombSfx: {fileID: 8300000, guid: 2ce615b0f2cc9f84fa73103a2c4555de, type: 3}
 --- !u!114 &8094408876259147517
 MonoBehaviour:
   m_ObjectHideFlags: 0

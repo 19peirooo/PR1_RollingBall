@@ -5,12 +5,21 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     
+    [SerializeField] private int lives = 5;
+    [SerializeField] private Camera freeCam;
+    
+    [Header("Movement")]
     [SerializeField] private float jumpForce = 15;
     [SerializeField] private float baseMoveForce = 40;
     [SerializeField] private float sprintMultiplier = 2;
     [SerializeField] private Transform orientation;
-    [SerializeField] private int lives = 5;
-    [SerializeField] private Camera freeCam;
+    
+    [Header("Audio Clips")]
+    [SerializeField] private AudioClip jumpSfx;
+    [SerializeField] private AudioClip freezeSfx;
+    [SerializeField] private AudioClip shrinkSfx;
+    [SerializeField] private AudioClip growSfx;
+    [SerializeField] private AudioClip dmgSfx;
     
     private Rigidbody rb;
     private float hInput;
@@ -49,6 +58,17 @@ public class Player : MonoBehaviour
         moveForce = isSprinting ? baseMoveForce * sprintMultiplier : baseMoveForce;
         transform.localScale = isMini ? baseSize/2 : baseSize;
         orientation.position = transform.position;
+
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            AudioManager.Instance.PlaySfx(shrinkSfx);
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftControl))
+        {
+            AudioManager.Instance.PlaySfx(growSfx);
+        }
+        
         Jump();
         ChangeCameraOrientation();
         
@@ -80,6 +100,7 @@ public class Player : MonoBehaviour
         if (isGrounded())
         {
             rb.AddForce(Vector3.up * jumpForce * gravMultiplier, ForceMode.Impulse);
+            AudioManager.Instance.PlaySfx(jumpSfx);
         }
     }
 
@@ -100,6 +121,7 @@ public class Player : MonoBehaviour
         if (other.gameObject.TryGetComponent(out Damage damage))
         {
             lives -= damage.ObtenerDamageAmount();
+            AudioManager.Instance.PlaySfx(dmgSfx);
             transform.position = GameManager.Instance.SpawnPoint;
             UIManager.Instance.LivesText.SetText(lives.ToString());
             if (lives <= 0)
@@ -136,6 +158,7 @@ public class Player : MonoBehaviour
     
     public void Freeze(float time)
     {
+        AudioManager.Instance.PlaySfx(freezeSfx);
         StartCoroutine(FreezeCoroutine(time));
     }
 

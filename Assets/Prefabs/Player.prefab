@@ -112,6 +112,8 @@ MonoBehaviour:
     m_Bits: 64
   jumpForce: 15
   orientation: {fileID: 0}
+  freeCam: {fileID: 0}
+  jumpSfx: {fileID: 8300000, guid: 71dd1b9eba7f3594f9b4b260d83c7a4c, type: 3}
 --- !u!114 &403810097853506000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,11 +126,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 034f0b7aa3fdfbc4ebf110f52fed4d8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
+  lives: 5
+  freeCam: {fileID: 0}
   jumpForce: 15
   baseMoveForce: 25
   sprintMultiplier: 2
   orientation: {fileID: 0}
-  lives: 5
+  jumpSfx: {fileID: 8300000, guid: 71dd1b9eba7f3594f9b4b260d83c7a4c, type: 3}
+  freezeSfx: {fileID: 8300000, guid: 2408c44aaf867aa42aed1d195667ce18, type: 3}
+  shrinkSfx: {fileID: 8300000, guid: 4a8080a99e607a447bf2eec7553f8bfc, type: 3}
+  growSfx: {fileID: 8300000, guid: 8f03ba915137b32439fd7743d6bc010f, type: 3}
+  dmgSfx: {fileID: 8300000, guid: 6f434c814812e7941ada106a3f6d9c4b, type: 3}
 --- !u!135 &4110526479842429310
 SphereCollider:
   m_ObjectHideFlags: 0

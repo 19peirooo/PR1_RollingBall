@@ -44,3 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57b01b871edf7454d938c59e36609549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  menuMusic: {fileID: 8300000, guid: 248a5743bba08ca43a1d9bf14a6fbdac, type: 3}
+  levelMusic: {fileID: 8300000, guid: b0a21f09d0d426f4bad14f90494ac11d, type: 3}
+  bossMusic: {fileID: 8300000, guid: 805618f66566753409bf5af93480b200, type: 3}
+  VictoryMusic: {fileID: 8300000, guid: 80bd067957b8456439024f26eecbdc5a, type: 3}
+  DefeatSfx: {fileID: 8300000, guid: 4a4b2989e8e87954fad6d7bf01debc7b, type: 3}

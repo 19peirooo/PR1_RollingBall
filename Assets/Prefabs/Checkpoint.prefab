@@ -125,3 +125,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 236b92c42888ded47a97f7c29076766e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Checkpoint
+  checkpointSfx: {fileID: 8300000, guid: c73234f1e18de944a98516ba4d5a2f16, type: 3}

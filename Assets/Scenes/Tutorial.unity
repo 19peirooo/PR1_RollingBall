@@ -1749,14 +1749,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Portal_NextLevel
       objectReference: {fileID: 0}
-    - target: {fileID: 154748759829638148, guid: fd738058a487dd044891fe86feb4154f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 6455763805089890017, guid: fd738058a487dd044891fe86feb4154f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 8009114086503735398, guid: fd738058a487dd044891fe86feb4154f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1797,10 +1789,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8579718551444060602, guid: fd738058a487dd044891fe86feb4154f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1833,11 +1821,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5550802344426959999, guid: 749ad228f3a76bd4eafc4039ecde158d, type: 3}
       propertyPath: damageAmount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5686997809213996160, guid: 749ad228f3a76bd4eafc4039ecde158d, type: 3}
       propertyPath: damageAmount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7171558797057554691, guid: 749ad228f3a76bd4eafc4039ecde158d, type: 3}
       propertyPath: m_Name
@@ -2241,6 +2229,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2389963424797737892, guid: 33ebfa2139c35634aafd50ef1eeeeeff, type: 3}
+      propertyPath: damageAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3846495702952245371, guid: 33ebfa2139c35634aafd50ef1eeeeeff, type: 3}
       propertyPath: m_Name
       value: Death Zone
@@ -2329,7 +2321,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8457030568297017088, guid: 841aa4e2ef02721468f66a55321650bc, type: 3}
       propertyPath: damageAmount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

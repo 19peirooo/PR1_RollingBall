@@ -160,6 +160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Muelle
   impulseDirection: {x: 0, y: 1, z: 0}
   impulseForce: 55
+  springSfx: {fileID: 8300000, guid: afa34722058fe7244b93e80a11fcce5f, type: 3}
 --- !u!64 &8891867442877441281
 MeshCollider:
   m_ObjectHideFlags: 0

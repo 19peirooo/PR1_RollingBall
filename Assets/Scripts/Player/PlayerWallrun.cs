@@ -9,6 +9,7 @@ public class PlayerWallrun : MonoBehaviour
     [SerializeField] private float jumpForce = 25f;
     [SerializeField] private Transform orientation;
     [SerializeField] private Camera freeCam;
+    [SerializeField] private AudioClip jumpSfx;
     
     private RaycastHit leftHit, rightHit, frontHit;
     private bool wallLeft, wallRight, wallFront;
@@ -103,6 +104,7 @@ public class PlayerWallrun : MonoBehaviour
         Vector3 wallNormal = wallRight ? rightHit.normal : leftHit.normal;
         Vector3 force = orientation.up * jumpForce + wallNormal * wallJumpForce;
         
+        AudioManager.Instance.PlaySfx(jumpSfx);
         rb.AddForce(force, ForceMode.Impulse);
 
         StopWallRun();

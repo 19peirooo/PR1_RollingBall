@@ -30,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 80844d124bb3cb54893e9d8bf21ba7e2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5
+      value: -1.67
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 80844d124bb3cb54893e9d8bf21ba7e2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -151,3 +151,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Life
   lives: 1
+  HeartSfx: {fileID: 8300000, guid: 3a0c6371da0e7c248b8e61b3d2f493cf, type: 3}

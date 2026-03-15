@@ -8,9 +8,10 @@ public class PlayerWallrun : MonoBehaviour
     [SerializeField] private LayerMask wallLayer;
     [SerializeField] private float jumpForce = 25f;
     [SerializeField] private Transform orientation;
+    [SerializeField] private Camera freeCam;
     
-    private RaycastHit leftHit, rightHit;
-    private bool wallLeft, wallRight;
+    private RaycastHit leftHit, rightHit, frontHit;
+    private bool wallLeft, wallRight, wallFront;
     private bool isWallRunning;
     private float wallJumpForce = 25f;
     
@@ -39,18 +40,38 @@ public class PlayerWallrun : MonoBehaviour
 
     private void DetectarPared()
     {
-        wallRight = Physics.Raycast(
-            transform.position, orientation.right,
-            out rightHit, wallCheckDistance, wallLayer);
+        if (freeCam)
+        {
+            wallRight = Physics.Raycast(
+                transform.position, freeCam.transform.right,
+                out rightHit, wallCheckDistance, wallLayer);
 
-        wallLeft = Physics.Raycast(
-            transform.position, -orientation.right,
-            out leftHit, wallCheckDistance, wallLayer);
+            wallLeft = Physics.Raycast(
+                transform.position, -freeCam.transform.right,
+                out leftHit, wallCheckDistance, wallLayer);
+            
+            wallFront = Physics.Raycast(
+                transform.position, -freeCam.transform.forward,
+                out frontHit, wallCheckDistance, wallLayer);
+        }
+        else
+        {
+            wallRight = Physics.Raycast(
+                transform.position, orientation.right,
+                out rightHit, wallCheckDistance, wallLayer);
+
+            wallLeft = Physics.Raycast(
+                transform.position, -orientation.right,
+                out leftHit, wallCheckDistance, wallLayer);
+
+            wallFront = false;
+        }
+        
     }
 
     private void HandleWallRun()
     {
-        bool canWallRun = (wallLeft || wallRight);
+        bool canWallRun = (wallLeft || wallRight || wallFront);
 
         if (canWallRun)
         {

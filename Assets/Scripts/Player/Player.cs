@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -9,6 +10,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float sprintMultiplier = 2;
     [SerializeField] private Transform orientation;
     [SerializeField] private int lives = 5;
+    [SerializeField] private Camera freeCam;
     
     private Rigidbody rb;
     private float hInput;
@@ -20,6 +22,7 @@ public class Player : MonoBehaviour
     //Variables de Estados Internos del Jugador
     private bool isSprinting = false;
     private bool isMini = false;
+    private bool frozen = false;
     
     private void Awake()
     {
@@ -53,13 +56,19 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (frozen) return;
+        Vector3 movement;
+        if (freeCam)
+        {
+            movement = freeCam.transform.forward * vInput + freeCam.transform.right * hInput;
+        }
+        else
+        {
 
-        Vector3 right = orientation.right;
-        right.y = 0f;
-        right.Normalize();
-
-        Vector3 movement = right * hInput + Vector3.forward * vInput;
-
+            movement = orientation.right * hInput + Vector3.forward * vInput;
+        }
+        
+        movement.y = 0f;
         rb.AddForce(movement.normalized * moveForce, ForceMode.Force);
         
     }
@@ -123,5 +132,22 @@ public class Player : MonoBehaviour
         {
             gravMultiplier = 1f;
         }
+    }
+    
+    public void Freeze(float time)
+    {
+        StartCoroutine(FreezeCoroutine(time));
+    }
+
+    private IEnumerator FreezeCoroutine(float time)
+    {
+        frozen = true;
+
+        rb.linearVelocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+
+        yield return new WaitForSeconds(time);
+
+        frozen = false;
     }
 }
